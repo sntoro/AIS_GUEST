@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Budgeting &ndash; Log In</title>
+        <title>Log In</title>
 
         <link rel="icon" href="<?php echo base_url('assets/img/url.jpeg'); ?>" >
 
