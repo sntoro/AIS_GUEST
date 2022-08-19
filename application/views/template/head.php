@@ -40,7 +40,7 @@
         <header class="header">
             <!-- BEGIN LOGO -->
             <a href="<?php echo base_url('index.php/basis/home_c'); ?>" class="logo">
-                <img src="<?php echo base_url('assets/img/logo-aisin.gif'); ?>" height="35">
+                <img src="<?php echo base_url('assets/img/logo.png'); ?>" height="35">
             </a>
             <!-- END LOGO -->
             <!-- BEGIN NAVBAR -->

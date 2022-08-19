@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.0.222',
-	'username' => 'guest',
-	'password' => 'P@ssw0rd',
-	'database' => 'DB_AIS',
+	'hostname' => '',
+	'username' => '',
+	'password' => '',
+	'database' => '',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -95,25 +95,3 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-
-$db['aorta'] = array(
-	'dsn'	=> '',
-	'hostname' => '192.168.0.222',
-	'username' => 'guest',
-	'password' => 'P@ssw0rd',
-	'database' => 'DB_AORTA',
-	'dbdriver' => 'sqlsrv',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => TRUE, //(ENVIRONMENT !== 'development'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);

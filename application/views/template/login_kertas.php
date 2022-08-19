@@ -40,7 +40,7 @@
                             <div class="account-wall">
                                 <!-- BEGIN PROFILE IMAGE -->
                                 <!--img class="profile-img" src="<?php echo base_url('assets/img/photo.png'); ?>" alt=""-->
-                                <img src="<?php echo base_url('assets/img/logo-aisin.gif'); ?>" alt="">
+                                <img src="<?php echo base_url('assets/img/logo.png'); ?>" alt="">
                                 <!-- END PROFILE IMAGE -->
                                 <!-- BEGIN LOGIN FORM -->
                                 <?php $this->load->view($content); ?> 

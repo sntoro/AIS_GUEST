@@ -27,15 +27,15 @@ class groupdept_m extends CI_Model {
     }
 
     function get_data_groupdept($id) {
-        $query = $this->db->query("select INT_ID_GROUP_DEPT, CHR_GROUP_DEPT ,CHR_GROUP_DEPT_DESC, INT_ID_DIVISION from TM_GROUP_DEPT where BIT_FLG_DEL = 0 and INT_ID_GROUP_DEPT = '" . $id . "'");
+        $query = $this->db->query("select INT_ID_GROUP_DEPT,SUBSTRING(CHR_GROUP_DEPT,7,3) GROUP_DEPT,  CHR_GROUP_DEPT ,CHR_GROUP_DEPT_DESC, INT_ID_DIVISION from TM_GROUP_DEPT where BIT_FLG_DEL = 0 and INT_ID_GROUP_DEPT = '" . $id . "'");
         return $query;
     }
-    
+
     function get_groupdept_by_division($id) {
         $query = $this->db->query("select INT_ID_GROUP_DEPT, CHR_GROUP_DEPT ,CHR_GROUP_DEPT_DESC from TM_GROUP_DEPT where BIT_FLG_DEL = 0 and INT_ID_DIVISION = '" . $id . "'")->result();
         return $query;
     }
-    
+
     function get_division_by_groupdept($id) {
         $query = $this->db->query("select INT_ID_DIVISION from TM_GROUP_DEPT where INT_ID_GROUP_DEPT = '" . $id . "'")->row_array();
         $part_of = $query['INT_ID_DIVISION'];
@@ -63,7 +63,16 @@ class groupdept_m extends CI_Model {
     }
 
     function generate_id_groupdept() {
-         return $this->db->query('select max(INT_ID_GROUP_DEPT) as a from TM_GROUP_DEPT')->row()->a + 1;
+        return $this->db->query('select max(INT_ID_GROUP_DEPT) as a from TM_GROUP_DEPT')->row()->a + 1;
+    }
+
+    function get_gdept_from_dept($dept) {
+        return $this->db->query('select INT_ID_GROUP_DEPT, CHR_GROUP_DEPT, CHR_GROUP_DEPT_DESC from TM_DEPT')->row();
+    }
+
+    function get_gdept_id($dept) {
+        return $this->db->query("select a.INT_ID_GROUP_DEPT, a.INT_ID_DIVISION from TM_DEPT b, TM_GROUP_DEPT a 
+                                where a.INT_ID_GROUP_DEPT=b.INT_ID_GROUP_DEPT and b.INT_ID_DEPT=$dept")->row();
     }
 
 }

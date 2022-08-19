@@ -10,10 +10,25 @@ class subsection_m extends CI_Model {
             where a.INT_ID_SECTION = b.INT_ID_SECTION and a.BIT_FLG_DEL = 0");
         return $query->result();
     }
-
+	
+	function get_subsection_by_id_section($id) {
+        $query = $this->db->query("select a.INT_ID_SUB_SECTION, a.CHR_SUB_SECTION, a.CHR_SUB_SECTION_DESC, b.CHR_SECTION, b.INT_ID_SECTION
+            from TM_SUB_SECTION a, TM_SECTION b
+            where a.INT_ID_SECTION = b.INT_ID_SECTION
+			and a.BIT_FLG_DEL = 0
+			and a.INT_ID_SECTION = '" . $id . "'");
+        return $query->result();
+    }
+	
+	function get_id_section_by_id_subsection($id) {
+        $query = $this->db->query("select INT_ID_SECTION from TM_SUB_SECTION where INT_ID_SUB_SECTION = '" . $id . "'")->result();
+        $id_section = $query[0]->INT_ID_SECTION;
+        return $id_section;
+    }
+	
     function get_name_subsection($id) {
-        $query = $this->db->query("select CHR_SUB_SECTION from TM_SUB_SECTION where INT_ID_SUB_SECTION = '" . $id . "'")->row_array();
-        $subsection = $query['CHR_SUB_SECTION'];
+        $query = $this->db->query("select CHR_SUB_SECTION from TM_SUB_SECTION where INT_ID_SUB_SECTION = '" . $id . "'")->result();
+        $subsection = $query[0]->CHR_SUB_SECTION;
         return $subsection;
     }
 

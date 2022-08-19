@@ -59,5 +59,20 @@ class division_m extends CI_Model {
     function generate_id_division() {
         return $this->db->query('select max(INT_ID_DIVISION) as a from TM_DIVISION')->row()->a + 1;
     }
+    
+//======================== UPDATE 16/07/2017 ---- FOR BUDGET =================//
+    function get_division_by_dept($id_dept) {
+        $query = $this->db->query("select a.INT_ID_DIVISION, a.CHR_DIVISION ,a.CHR_DIVISION_DESC,a.INT_ID_COMPANY from TM_DIVISION as a 
+                                left join TM_GROUP_DEPT as b on a.INT_ID_DIVISION = b.INT_ID_DIVISION
+                                left join TM_DEPT as c on b.INT_ID_GROUP_DEPT = c.INT_ID_GROUP_DEPT
+                                where a.BIT_FLG_DEL = 0 and c.INT_ID_DEPT = '$id_dept'")->row();
+        return $query;
+    }
+    
+    function get_division_for_directmaterial() {
+        $query = $this->db->query("select a.INT_ID_DIVISION, a.CHR_DIVISION, a.CHR_DIVISION_DESC, b.CHR_COMPANY_DESC 
+            from TM_DIVISION a, TM_COMPANY b where a.INT_ID_COMPANY = b.INT_ID_COMPANY and a.INT_ID_DIVISION = '1' and a.BIT_FLG_DEL = 0");
+        return $query->result();
+    }
 
 }
